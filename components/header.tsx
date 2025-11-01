@@ -9,10 +9,10 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null)
 
   const hamburguerIcon = (
-    <HamburgerMenuIcon className='size-7 cursor-pointer' style={{ color: '#e8000c' }} />
+    <HamburgerMenuIcon className='size-7 cursor-pointer' style={{ color: '#c24100' }} />
   )
   const closeIcon = (
-    <Cross1Icon className='size-7 cursor-pointer' style={{ color: '#e8000c' }} />
+    <Cross1Icon className='size-7 cursor-pointer' style={{ color: '#c24100' }} />
   )
 
 

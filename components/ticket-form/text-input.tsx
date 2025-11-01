@@ -52,7 +52,7 @@ export const TextInput = ({
                 className='border border-Neutral-500 rounded-lg h-11 px-3'
                 maxLength={maxLength}
                 required={required}
-                value={value}
+                value={value ?? ''}
                 onChange={handleChange}
             />
             {required && (
