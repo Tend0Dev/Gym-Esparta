@@ -19,15 +19,40 @@ export const UploadInput = ({ onUploadChange, onFileSelect, preview }: UploadInp
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+
+    // ✅ Validación básica de tipo de archivo
+    if (file && !file.type.startsWith('image/')) {
+      alert('Solo se permiten imágenes');
+      resetUpload();
+      return;
+    }
+
     if (file) {
       setFileUploaded(true);
       onUploadChange?.(true);
       onFileSelect?.(file);
 
       const reader = new FileReader();
-      reader.onload = () => {
-        setPreviewUrl(reader.result as string);
+
+      // ✅ Manejo de errores de FileReader
+      reader.onerror = () => {
+        console.error('Error leyendo el archivo');
+        resetUpload();
       };
+
+      reader.onload = () => {
+        try {
+          if (typeof reader.result === 'string') {
+            setPreviewUrl(reader.result);
+          } else {
+            throw new Error('No se pudo generar la previsualización');
+          }
+        } catch (error) {
+          console.error(error);
+          resetUpload();
+        }
+      };
+
       reader.readAsDataURL(file);
     } else {
       resetUpload();
@@ -48,13 +73,17 @@ export const UploadInput = ({ onUploadChange, onFileSelect, preview }: UploadInp
       </p>
 
       <label className='bg-black/10 border border-neutral-500 border-dashed px-4 py-3 block w-full rounded-lg cursor-pointer mb-2 relative overflow-hidden'>
-        <div className='bg-neutral-300 size-20 grid place-content-center rounded-lg  mx-auto mb-2 relative border border-Neutral-500/70'>
-          {/* 👇 Si hay preview, mostramos la imagen en lugar del ícono */}
+        <div className='bg-neutral-300 size-20 grid place-content-center rounded-lg mx-auto mb-2 relative border border-Neutral-500/70'>
+          {/* 👇 Mostrar preview seguro */}
           {previewUrl ? (
             <img
               src={previewUrl}
               alt="preview"
-              className="size-20 object-cover rounded-lg  shadow-md"
+              className="size-20 object-cover rounded-lg shadow-md"
+              onError={() => {
+                console.error('Error cargando la imagen');
+                resetUpload();
+              }}
             />
           ) : (
             <img src="/icon-upload.svg" alt="upload" className="w-6 h-6" />
@@ -70,7 +99,6 @@ export const UploadInput = ({ onUploadChange, onFileSelect, preview }: UploadInp
         <p className='text-center'>Subir archivo</p>
       </label>
 
-      {/* ✅ Botón eliminar (solo si hay imagen) */}
       {previewUrl && (
         <div className="flex justify-center mb-2">
           <button

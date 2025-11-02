@@ -1,8 +1,8 @@
 export const SuccessfulPayment = () => {
   return (
-    <div className=" text-card-foreground px-6 text-center">
-      <div className="min-w-[450px] backdrop-blur-md p-10">
-        <h1 className="text-4xl text-secondary font-extrabold mb-4 tracking-wider">
+    <div className=" text-card-foreground px-6 text-pretty md:text-center">
+      <div className="min-w-[400px] backdrop-blur-md p-10">
+        <h1 className="text-4xl text-secondary font-extrabold mb-4 tracking-wider text-center">
           ¡Compra realizada con éxito!
         </h1>
 
