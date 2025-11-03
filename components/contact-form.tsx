@@ -69,7 +69,7 @@ export function ContactForm() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-card-foreground mb-1">Teléfono</h3>
-                    <p className="text-muted-foreground">+34 900 300 300</p>
+                    <p className="text-muted-foreground">+52 446 335 5305</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -78,7 +78,7 @@ export function ContactForm() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-card-foreground mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@gimnasioesparta.com</p>
+                    <p className="text-muted-foreground">gymesparta@gmail.com</p>
                   </div>
                 </div>
               </CardContent>
