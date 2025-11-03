@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="bg-secondary text-secondary-foreground py-12 px-4">
       <div className="container mx-auto">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:flex md:place-content-evenly gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-accent p-2 rounded-lg">
@@ -59,7 +59,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h4 className="font-semibold mb-4 text-accent">Síguenos</h4>
             <div className="flex gap-4">
               <a href="#" className="bg-accent/10 p-2 rounded-lg hover:bg-accent/20 transition-colors">
@@ -72,7 +72,7 @@ export function Footer() {
                 <Twitter className="h-5 w-5 text-accent" />
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="border-t border-accent/20 pt-8 text-center text-sm text-secondary-foreground/60">
