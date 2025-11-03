@@ -69,7 +69,7 @@ export const TicketForm = () => {
         {/* Nombre */}
         <TextInput
           label='Nombre Completo'
-          placeholder='Angel Mejia'
+          placeholder='Mike Lewandowski'
           required
           value={formData.nombre}
           onChange={handleInputChange('nombre')}
